@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Creative Counseling by FF",
+  description: "Elite consulting for storytellers building careers, protecting ideas, and taking their work to industry.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>{children}</body>
+      <Analytics />
+    </html>
+  );
+}
