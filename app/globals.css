@@ -1,0 +1,29 @@
+:root {
+  --td: #0b3d38;
+  --tm: #0d5049;
+  --tb: rgba(26, 122, 110, 0.3);
+  --g: #c9973b;
+  --gl: #e8b86d;
+  --gd: #8a640e;
+  --cr: #f5efe3;
+  --pa: #faf6ee;
+  --ink: #1a1208;
+  --tb2: #3d2e18;
+  --tm2: #7a6245;
+  --wh: #fff;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--pa);
+  color: var(--tb2);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  overflow-x: hidden;
+}
