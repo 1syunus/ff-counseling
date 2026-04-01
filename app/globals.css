@@ -27,3 +27,90 @@ body {
   font-family: var(--font-montserrat), system-ui, sans-serif;
   overflow-x: hidden;
 }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 3rem;
+  background: rgba(11, 61, 56, 0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--tb);
+  transition: box-shadow 0.3s;
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.ff-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.nbtext {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.nbtext .sup {
+  font-size: 0.54rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--g);
+}
+
+.nbtext .main {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1rem;
+  color: var(--wh);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gl);
+}
+
+.nav-cta {
+  font-size: 0.63rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--g);
+  padding: 0.58rem 1.4rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--gl);
+  transform: translateY(-1px);
+}
