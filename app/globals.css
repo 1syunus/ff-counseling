@@ -973,3 +973,142 @@ nav.scrolled {
   color: rgba(255, 255, 255, 0.32);
   line-height: 1.5;
 }
+
+/* CTA */
+.cta {
+  background: var(--cr);
+  border-top: 1px solid rgba(201, 151, 59, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 8rem 3rem;
+  text-align: center;
+}
+
+.cta-inner h2 {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--td);
+  margin-bottom: 1.2rem;
+}
+
+.cta-inner h2 em {
+  font-style: italic;
+  color: var(--gd);
+}
+
+.cta-inner p {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--tm2);
+  font-weight: 300;
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-t {
+  display: inline-block;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wh);
+  background: var(--td);
+  padding: 0.88rem 2.2rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.btn-t:hover {
+  background: var(--tm);
+  transform: translateY(-2px);
+}
+
+.btn-og {
+  display: inline-block;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gd);
+  border: 1px solid var(--g);
+  padding: 0.88rem 2.2rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.25s;
+}
+
+.btn-og:hover {
+  background: var(--g);
+  color: var(--ink);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(201, 151, 59, 0.12);
+  padding: 2.4rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.fb {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.fb-text {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.32);
+  line-height: 1.6;
+}
+
+.fb-text strong {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+}
+
+.fl {
+  display: flex;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.fl a {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.fl a:hover {
+  color: var(--g);
+}
+
+.fc {
+  font-size: 0.56rem;
+  letter-spacing: 0.15em;
+  color: rgba(201, 151, 59, 0.35);
+  text-transform: uppercase;
+}
