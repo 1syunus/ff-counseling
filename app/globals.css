@@ -414,3 +414,77 @@ nav.scrolled {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* MARQUEE */
+.marquee {
+  background: var(--g);
+  overflow: hidden;
+  padding: 0.62rem 0;
+  white-space: nowrap;
+  position: relative;
+  z-index: 3;
+}
+
+.mq-inner {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  font-size: 0.57rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* MANIFESTO */
+.mf {
+  background: var(--cr);
+  border-bottom: 1px solid rgba(201, 151, 59, 0.2);
+}
+
+.mf-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.mf-q {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.3rem);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--td);
+  border-left: 3px solid var(--g);
+  padding-left: 1.8rem;
+}
+
+.mf-q em {
+  color: var(--gd);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.mf-attr {
+  margin-top: 1.1rem;
+  padding-left: 1.8rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--tm2);
+}
+
+.mf-r p {
+  font-size: 0.97rem;
+  line-height: 1.9;
+  color: var(--tm2);
+  margin-bottom: 1.1rem;
+  font-weight: 300;
+}
+
+.mf-r p strong {
+  color: var(--ink);
+  font-weight: 500;
+}
