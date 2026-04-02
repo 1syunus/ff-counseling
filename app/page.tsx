@@ -4,6 +4,8 @@ import Marquee from "@/components/Marquee"
 import Manifesto from "@/components/Manifesto"
 import Services from "@/components/Services"
 import AddOns from "@/components/Addons"
+import About from "@/components/About"
+import Testimonials from "@/components/Testimonials"
 
 export default function Home() {
   return (
@@ -14,8 +16,8 @@ export default function Home() {
       <Manifesto />
       <Services />
       <AddOns />
-      {/* About */}
-      {/* Testimonials */}
+      <About />
+      <Testimonials />
       {/* CTA */}
       {/* Footer */}
     </main>
