@@ -766,3 +766,210 @@ nav.scrolled {
   color: rgba(255, 255, 255, 0.42);
   font-weight: 300;
 }
+
+/* ABOUT */
+.ab {
+  background: var(--pa);
+  border-top: 1px solid rgba(201, 151, 59, 0.2);
+}
+
+.ab-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 3rem;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 7rem;
+  align-items: start;
+}
+
+.pf {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(160deg, var(--tm) 0%, var(--td) 100%);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 8%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23e8b86d' stroke-width='.4' opacity='.2'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3Ccircle cx='30' cy='30' r='18'/%3E%3Cline x1='2' y1='30' x2='58' y2='30'/%3E%3Cline x1='30' y1='2' x2='30' y2='58'/%3E%3Cline x1='10' y1='10' x2='50' y2='50'/%3E%3Cline x1='50' y1='10' x2='10' y2='50'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+.pf-init {
+  font-family: var(--font-cormorant), serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: var(--g);
+  opacity: 0.45;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.1em;
+}
+
+.pf-name {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  position: relative;
+  z-index: 1;
+}
+
+.pf-border {
+  position: absolute;
+  top: 14px;
+  left: -14px;
+  right: 14px;
+  bottom: -14px;
+  border: 1px solid rgba(201, 151, 59, 0.28);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 8%);
+  pointer-events: none;
+}
+
+.pf-wrap {
+  position: relative;
+}
+
+.creds {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cred {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(201, 151, 59, 0.1);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--tm2);
+}
+
+.cred-d {
+  width: 4px;
+  height: 4px;
+  background: var(--g);
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+  border-radius: 50%;
+}
+
+.ac .lead {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.22rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--td);
+  margin-bottom: 1.6rem;
+}
+
+.ac p {
+  font-size: 0.96rem;
+  line-height: 1.9;
+  color: var(--tm2);
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+.ac p strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.8rem;
+  padding-top: 2.8rem;
+  border-top: 1px solid rgba(201, 151, 59, 0.18);
+}
+
+.sn {
+  font-family: var(--font-cormorant), serif;
+  font-size: 2.7rem;
+  font-weight: 400;
+  color: var(--tm);
+  line-height: 1;
+}
+
+.sl2 {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tm2);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+/* TESTIMONIALS */
+.ts {
+  background: linear-gradient(160deg, #0d5049 0%, #0b3d38 100%);
+  border-top: 1px solid var(--tb);
+  position: relative;
+}
+
+.ts-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+}
+
+.ts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.tcard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--tb);
+  padding: 2.2rem 2rem;
+}
+
+.tm-mark {
+  font-family: var(--font-cormorant), serif;
+  font-size: 3.2rem;
+  line-height: 0.4;
+  color: var(--gd);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.tm-text {
+  font-family: var(--font-cormorant), serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 1.4rem;
+}
+
+.tm-name {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: 0.08rem;
+}
+
+.tm-title {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.32);
+  line-height: 1.5;
+}
