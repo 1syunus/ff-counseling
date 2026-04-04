@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 type Fields = {
   first_name: string
@@ -16,12 +16,16 @@ type Fields = {
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
-const empty: Fields = {
+interface ContactFormProps {
+  tier?: string
+  onTierChange: (value: string) => void
+}
+
+const empty: Omit<Fields, 'tier'> = {
   first_name: '',
   last_name:  '',
   email:      '',
   phone:      '',
-  tier:       '',
   medium:     '',
   needs:      [],
   project:    '',
@@ -29,10 +33,22 @@ const empty: Fields = {
 }
 
 const tierOptions = [
-  { value: 'foundation', label: 'Tier I — Foundation ($350 – $600, one-time)' },
-  { value: 'guidance',   label: 'Tier II — Guidance ($1,200 – $1,800 / month)' },
-  { value: 'incubation', label: 'Tier III — Incubation ($2,500 – $4,000 / month)' },
-  { value: 'unsure',     label: 'Not sure yet — I\'d like guidance' },
+  {
+    value: 'Tier I — Foundation ($350 – $600, one-time)',
+    label: 'Tier I — Foundation ($350 – $600, one-time)',
+  },
+  {
+    value: 'Tier II — Guidance ($1,200 – $1,800 / month)',
+    label: 'Tier II — Guidance ($1,200 – $1,800 / month)',
+  },
+  {
+    value: 'Tier III — Incubation ($2,500 – $4,000 / month)',
+    label: 'Tier III — Incubation ($2,500 – $4,000 / month)',
+  },
+  {
+    value: 'Not sure yet — I\'d like guidance',
+    label: 'Not sure yet — I\'d like guidance',
+  },
 ]
 
 const mediumOptions = [
@@ -56,15 +72,36 @@ const needsOptions = [
 
 const MAX_CHARS = 800
 
-export default function ContactForm() {
-  const [fields, setFields] = useState<Fields>(empty)
+export default function ContactForm({ tier, onTierChange }: ContactFormProps) {
+  const [fields, setFields] = useState<Omit<Fields, 'tier'>>(empty)
   const [status, setStatus] = useState<Status>('idle')
   const [error,  setError]  = useState<string>('')
+  const selectRef = useRef<HTMLSelectElement>(null)
+  const prevTier = useRef<string>('')
+
+    useEffect(() => {
+      if (!tier || tier === prevTier.current) return
+      prevTier.current = tier
+
+      const el = selectRef.current
+      if (!el) return
+      el.classList.remove('select-flash')
+      void el.offsetWidth
+      el.classList.add('select-flash')
+      const timer = setTimeout(
+        () => el.classList.remove('select-flash'), 900
+      )
+      return () => clearTimeout(timer)
+    }, [tier])
 
   function updateField(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  function handleTierChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    onTierChange(e.target.value)
   }
 
   function updateCheckbox(e: React.ChangeEvent<HTMLInputElement>) {
@@ -167,8 +204,8 @@ export default function ContactForm() {
       <label className="cf-field">
         <span className="cf-label">Which tier interests you?</span>
         <div className="cf-select-wrap">
-          <select className="cf-input cf-select" name="tier"
-            value={fields.tier} onChange={updateField} required>
+          <select className="cf-input cf-select" name="tier" id="tier-select"
+            ref={selectRef} value={tier} onChange={handleTierChange} required>
             <option value="" disabled>Select a tier…</option>
             {tierOptions.map((o) => (
               <option key={o.value} value={o.value}>{o.label}</option>
