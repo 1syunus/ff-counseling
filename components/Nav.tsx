@@ -33,7 +33,7 @@ export default function Nav() {
       <div className="nav-brand">
         <svg className="ff-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <polygon points="10,8 24,24 10,40 16,40 30,24 16,8" fill="#c9973b" />
-          <polygon points="22,8 36,24 22,40 28,40 42,24 28,8" fill="#c9973b" opacity=".55" />
+          <polygon points="22,8 36,24 22,40 28,40 42,24 28,8" fill="#40e8e8" opacity=".7" />
         </svg>
         <div className="nbtext">
           <span className="sup">Fictional Frontiers</span>
