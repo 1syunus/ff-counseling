@@ -1,3 +1,9 @@
+import Image from "next/image"
+
+interface AboutProps {
+    profileSrc?: string
+}
+
 const credentials = [
   'J.D., Rutgers School of Law — Camden',
   'B.A. Political Science, Univ. of Richmond',
@@ -15,7 +21,7 @@ const stats = [
   { number: '3',    label: 'Disciplines: Law,\nMedia & Creation' },
 ]
 
-export default function About() {
+export default function About({ profileSrc }: AboutProps) {
   return (
     <section className="ab" id="about">
       <div className="ab-inner">
@@ -23,8 +29,21 @@ export default function About() {
         <div className="reveal">
           <div className="pf-wrap">
             <div className="pf">
-              <div className="pf-init">SA</div>
-              <div className="pf-name">Sohaib Awan</div>
+                {profileSrc ? (
+                <Image
+                  src={profileSrc}
+                  alt="Sohaib Awan"
+                  fill
+                  className="pf-image"
+                  sizes="(max-width: 768px) 260px, 33vw"
+                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                />
+              ) : (
+                <>
+                    <div className="pf-init">SA</div>
+                    <div className="pf-name">Sohaib Awan</div>
+                </>
+              )}
             </div>
             <div className="pf-border" />
           </div>
