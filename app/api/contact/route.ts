@@ -1,8 +1,6 @@
 // NOTE: Resend integration is scaffolded but not active.
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const NEEDS_LABELS: Record<string, string> = {
   story_dev:  'Story development',
   industry:   'Industry navigation',
@@ -17,6 +15,11 @@ const TIER_LABELS: Record<string, string> = {
   guidance:   'Tier II — Guidance ($1,200 – $1,800 / month)',
   incubation: 'Tier III — Incubation ($2,500 – $4,000 / month)',
   unsure:     'Not sure yet — would like guidance',
+}
+
+function isResendConfigured(): boolean {
+  const key = process.env.RESEND_API_KEY
+  return typeof key === 'string' && key.length > 0 && key !== 'placeholder'
 }
 
 export async function POST(req: Request) {
@@ -41,6 +44,24 @@ export async function POST(req: Request) {
         { status: 400 }
       )
     }
+
+    // Graceful fallback while domain is pending
+    if (!isResendConfigured()) {
+      console.warn(
+        '[contact] Resend not configured — inquiry received but not delivered.',
+        { first_name, last_name, email, tier }
+      )
+      return Response.json(
+        {
+          error:
+            'Our inquiry system is not yet active. Please email us directly while we finish setup.',
+        },
+        { status: 503 }
+      )
+    }
+
+    // Lazy instantiation — only runs at request time, never at build time
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     const needsList = Array.isArray(needs) && needs.length
       ? needs.map((n: string) => NEEDS_LABELS[n] ?? n).join(', ')
