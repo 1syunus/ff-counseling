@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 export default function Nav() {
   const navRef = useRef<HTMLElement>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const nav = navRef.current
@@ -18,6 +19,15 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  function handleLinkClick() {
+    setMenuOpen(false)
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   return (
     <nav ref={navRef} id="mnav">
       <div className="nav-brand">
@@ -30,16 +40,41 @@ export default function Nav() {
           <span className="main">Creative Counseling</span>
         </div>
       </div>
-
+      
+      {/* Desktop links */}  
       <ul className="nav-links">
         <li><Link href="#services">Services</Link></li>
         <li><Link href="#about">Sohaib Awan</Link></li>
         <li><Link href="#voices">Voices</Link></li>
       </ul>
 
-      <Link href="#contact" className="nav-cta">
+      <Link href="#contact" className="nav-cta nav-cta--desktop" onClick={handleLinkClick}>
         Begin Inquiry
       </Link>
+
+      {/* Hamburger button */}
+      <button
+        className={`nav-burger${menuOpen ? ' is-open' : ''}`}
+        onClick={() => setMenuOpen((o) => !o)}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+      >
+        <span /><span /><span />
+      </button>
+
+      {/* Mobile drawer */}
+      <div className={`nav-drawer${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}>
+        <ul className="nav-drawer-links">
+          <li><Link href="#services" onClick={handleLinkClick}>Services</Link></li>
+          <li><Link href="#about"    onClick={handleLinkClick}>Sohaib Awan</Link></li>
+          <li><Link href="#voices"   onClick={handleLinkClick}>Voices</Link></li>
+        </ul>
+        <Link href="#contact" className="nav-cta nav-cta--mobile"
+          onClick={handleLinkClick}>
+          Begin Inquiry
+        </Link>
+      </div>
     </nav>
   )
 }
