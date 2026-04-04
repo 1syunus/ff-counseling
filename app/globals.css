@@ -11,6 +11,11 @@
   --tb2: #3d2e18;
   --tm2: #7a6245;
   --wh: #fff;
+  --ta: #0d5c5c;
+  --aq: #0e7a7a;
+  --ab: #00a8a8;
+  --cy: #00d4d4;
+  --cl: #40e8e8;
 }
 
 *, *::before, *::after {
@@ -25,7 +30,6 @@ body {
   background: var(--pa);
   color: var(--tb2);
   font-family: var(--font-montserrat), system-ui, sans-serif;
-  overflow-x: hidden;
 }
 
 html, body {
@@ -123,7 +127,7 @@ nav.scrolled {
 /* HERO */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   background: var(--td);
   display: flex;
   align-items: center;
@@ -139,15 +143,6 @@ nav.scrolled {
   background-size: 100px 100px;
 }
 
-.hero-arch-bg {
-  position: absolute;
-  right: -40px;
-  top: -20px;
-  height: 110%;
-  z-index: 1;
-  opacity: 0.1;
-}
-
 .hero-glow {
   position: absolute;
   inset: 0;
@@ -155,6 +150,20 @@ nav.scrolled {
   background:
     radial-gradient(ellipse 50% 60% at 30% 55%, rgba(201, 151, 59, 0.12) 0%, transparent 65%),
     radial-gradient(ellipse 70% 50% at 75% 40%, rgba(26, 122, 110, 0.25) 0%, transparent 60%);
+}
+
+.hero-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-image {
+  background-color: #0e7a7a;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+  opacity: .2;
 }
 
 .hero-inner {
@@ -225,6 +234,21 @@ nav.scrolled {
   margin-top: 2.5rem;
   opacity: 0;
   animation: fadeUp 0.9s 0.65s forwards;
+}
+
+a.tier-pill {
+  text-decoration: none;
+  display: flex;
+}
+
+.tier-pill--iii:hover {
+  transition: background 0.3s, border-left-color 0.3s;
+  border-left-color: var(--cl);
+  background: rgba(64, 232, 232, 0.06);
+}
+
+.tier-pill--iii:hover .tp-num {
+  color: var(--cl);
 }
 
 .btn-p {
@@ -399,25 +423,24 @@ nav.scrolled {
 .d2 { transition-delay: 0.24s; }
 .d3 { transition-delay: 0.36s; }
 
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: none; }
+.pf {
+  position: relative;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.pf-image {
+  object-fit: cover;
+  object-position: top center;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 8%);
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 0.9; }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.pf::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 8%);
+  border: 2px solid rgba(13, 80, 73, 0.45);
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* MARQUEE */
@@ -432,7 +455,7 @@ nav.scrolled {
 
 .mq-inner {
   display: inline-block;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
   font-size: 0.57rem;
   letter-spacing: 0.42em;
   text-transform: uppercase;
@@ -756,6 +779,7 @@ nav.scrolled {
   font-size: 1.3rem;
   margin-bottom: 0.7rem;
   display: block;
+  color: #40e8e8;
 }
 
 .ao-name {
@@ -1114,7 +1138,7 @@ footer {
 .fc {
   font-size: 0.56rem;
   letter-spacing: 0.15em;
-  color: rgba(201, 151, 59, 0.35);
+  color: rgba(201, 151, 59, 0.629);
   text-transform: uppercase;
 }
 
@@ -1194,6 +1218,25 @@ footer {
   font-size: 0.72rem;
   color: var(--tm2);
   transition: background 0.25s, border-color 0.25s;
+}
+
+.tip--btn {
+  width: 100%;
+  background: none;
+  border: none;
+  border-left: 2px solid var(--g);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tip--active {
+  background: rgba(201, 151, 59, 0.12);
+  border-left-color: var(--g);
+}
+
+.tip--active .tip-num {
+  color: var(--g);
 }
 
 .tip:hover {
@@ -1508,6 +1551,46 @@ footer {
   text-decoration: underline;
 }
 
+/* ANIMATIONS */
+.select-flash {
+  animation: selectFlash 0.75s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.9; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes selectFlash {
+  0%   {
+    background: rgba(64, 232, 232, 0.18);
+    border-color: var(--cl);
+  }
+  50%  {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    background: var(--pa);
+    border-color: rgba(201, 151, 59, 0.25);
+  }
+}
+
 /* ============================================================
    RESPONSIVE — mobile-first breakpoints
    Desktop styles are unchanged above. These rules override
@@ -1762,17 +1845,23 @@ footer {
 }
 
 /* ── ABOUT ── */
-@media (max-width: 768px) {
+/* Mid-range: 640px–768px — horizontal, full image left */
+@media (max-width: 768px) and (min-width: 641px) {
   .ab-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 4rem 1.4rem;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2rem;
+    padding: 4rem 1.6rem;
+    align-items: start;
   }
 
   .pf {
-    aspect-ratio: 4 / 3;
-    max-width: 260px;
-    margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    width: 100%;
+  }
+
+  .pf-wrap {
+    position: sticky;
+    top: 5rem;
   }
 
   .ab-stats {
@@ -1786,7 +1875,47 @@ footer {
 
   .sl2 {
     font-size: 0.55rem;
-    letter-spacing: 0.15em;
+  }
+}
+
+/* Mobile: below 640px — vertical stack, landscape image */
+@media (max-width: 640px) {
+  .ab-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 4rem 1.4rem;
+  }
+
+  .pf {
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    max-width: 100%;
+    clip-path: polygon(8% 0%, 92% 0%, 100% 6%, 100% 100%, 0% 100%, 0% 6%);
+  }
+
+  /* Adjust inner frame clip to match */
+  .pf::after {
+    clip-path: polygon(8% 0%, 92% 0%, 100% 6%, 100% 100%, 0% 100%, 0% 6%);
+  }
+
+  .pf-border {
+    clip-path: polygon(8% 0%, 92% 0%, 100% 6%, 100% 100%, 0% 100%, 0% 6%);
+  }
+
+  .ab-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .sn {
+    font-size: 1.8rem;
+  }
+
+  .sl2 {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
   }
 }
 
