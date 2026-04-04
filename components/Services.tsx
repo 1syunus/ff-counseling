@@ -27,8 +27,8 @@ export default function Services() {
             <div className="gr" />
           </div>
           <p className="reveal d2">
-            Each tier serves a different stage of the creator's journey — from
-            early concept evaluation through deep multi-month incubation. Wherever
+            Each tier serves a different stage of the creator's journey.<br />From
+            early concept evaluation through deep multi-month incubation: Wherever
             you are, there is a path forward that respects both your creative vision
             and your commercial ambitions.
           </p>
