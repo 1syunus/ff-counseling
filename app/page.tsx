@@ -20,7 +20,7 @@ export default function Home() {
       <Manifesto />
       <Services />
       <AddOns />
-      <About />
+      <About profileSrc="/images/sohaib.png" />
       <Testimonials />
       <CTA />
       <Footer />

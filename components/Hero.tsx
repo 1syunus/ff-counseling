@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const tierPills = [
   { num: 'Tier I',   name: 'Foundation',  price: '$350 – $600' },
@@ -9,22 +10,27 @@ const tierPills = [
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-pat" />
+      {/* Layer 1 — illustration, grayscaled and blurred via CSS */}
+      <div className="hero-image-wrap">
+        <Image
+          src="/images/hero-bg.png"
+          alt="animated depiction of crowded, peaceful scene with birds in the air and Muslim architecture in the backdrop"
+          fill
+          priority
+          className="hero-image"
+          sizes="100vw"
+        />
+      </div>
 
-      <svg
-        className="hero-arch-bg"
-        viewBox="0 0 400 900"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path d="M40 900 L40 320 Q40 60 200 60 Q360 60 360 320 L360 900Z" fill="white" />
-        <path d="M70 900 L70 335 Q70 110 200 110 Q330 110 330 335 L330 900Z" fill="none" stroke="white" strokeWidth="1.5" />
-        <path d="M110 900 L110 360 Q110 180 200 180 Q290 180 290 360 L290 900Z" fill="none" stroke="white" strokeWidth=".8" />
-      </svg>
+      {/* Layer 2 — teal-to-cyan gradient overlay */}
+      <div className="hero-overlay" />
+
+      {/* Layer 3 — existing decorative elements */}
+      <div className="hero-pat" />
 
       <div className="hero-glow" />
 
+      {/* Layer 4 — content */}
       <div className="hero-inner">
         <div>
           <div className="hero-eyebrow">
@@ -57,17 +63,18 @@ export default function Hero() {
         <div className="hero-right">
           <div className="hero-tiers">
             {tierPills.map((tier) => (
-              <div key={tier.num} className="tier-pill">
+              <Link key={tier.num} href="#services" className={`tier-pill${tier.num === 'Tier III' ? ' tier-pill--iii' : ''}`}>
                 <span className="tp-num">{tier.num}</span>
                 <span className="tp-name">{tier.name}</span>
                 <span className="tp-price">{tier.price}</span>
-              </div>
+              </Link>
             ))}
             <div className="tp-note">+ Optional add-ons available across all tiers</div>
           </div>
         </div>
       </div>
 
+      <div className="hero-accent-bar" />
       <div className="scroll-cue">
         <span>Scroll</span>
         <div className="scroll-line" />
